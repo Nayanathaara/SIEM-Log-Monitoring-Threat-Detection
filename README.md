@@ -103,7 +103,7 @@ A PowerShell command containing an encoded payload was executed from the Windows
 
 `powershell -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAEgAZQBsAGwAbwAiAA==`
 
-![Attack Screenshot](Screenshots\Powershell-activity\EncodedCommand.png)
+![Attack Screenshot](Screenshots/Powershell-activity/EncodedCommand.png)
 
 *Fig 4 :Execution of a Base64-encoded PowerShell command on the Windows 11 host endpoint.*
 
@@ -124,7 +124,7 @@ The following PowerShell command was executed:
 
 `powershell -WindowStyle Hidden "Start-Process calc "`
 
-![Attack Screenshot](Screenshots\Powershell-activity\Powershell_spawning_calc.exe.png)
+![Attack Screenshot](Screenshots/Powershell-activity/Powershell_spawning_calc.exe.png)
 
 *Figure 5 - PowerShell spawning a child process (calc.exe) on the Windows 11 host endpoint.*
 
@@ -144,7 +144,7 @@ Linux auth.log
 
 Detect repeated failed SSH authentication attempts using Splunk SIEM
 
-![failed ssh events](Screenshots\ssh-bruteforce\ssh-failed-events.png)
+![failed ssh events](Screenshots/ssh-bruteforce/ssh-failed-events.png)
 
 *Fig 6 :SSH login attempts failed results in splunk.*
 
@@ -152,7 +152,7 @@ Detect repeated failed SSH authentication attempts using Splunk SIEM
 
 A Splunk search was created to identify multiple failed SSH authentication events within a short time period.
 
-![detection rule](Screenshots\ssh-bruteforce\sshFail_detection_rule.png)
+![detection rule](Screenshots/ssh-bruteforce/sshFail_detection_rule.png)
 
 *Fig 7 :SSH brute-force detection rule created in splunk.*
 
@@ -160,7 +160,7 @@ A Splunk search was created to identify multiple failed SSH authentication event
 
 The detection successfully identified historical brute-force activity recorded in auth.log. A new brute-force attack was later simulated after alert creation, resulting in successful real-time alert generation.
 
-![Alert Screenshot](Screenshots\ssh-bruteforce\ssh-triggered-Alert.png)
+![Alert Screenshot](Screenshots/ssh-bruteforce/ssh-triggered-Alert.png)
 
 *Fig 8 :SSH brute-force alert generated in Splunk.*
 
@@ -186,7 +186,7 @@ source="/var/log/auth.log" index="main" "session opened"
 
 The search successfully identified session creation events associated with user activity and elevated privileges. The results correlated with the previously observed sudo-based privilege escalation activity.
 
-![Result Screenshot](Screenshots\privilege-escalation\priv_escalationSplunk_detection.png)
+![Result Screenshot](Screenshots/privilege-escalation/priv_escalationSplunk_detection.png)
 
 *Fig 9 :Privilege escalation detected in Splunk.*
 
@@ -205,7 +205,7 @@ Detect PowerShell executions containing encoded command-line arguments.
 
 A Splunk dsearch was created to identify PowerShell executions containing the EncodedCommand parameter. 
 
-![detection rule](Screenshots\Powershell-activity\EncodedCmd_DetectionRule.png)
+![detection rule](Screenshots/Powershell-activity/EncodedCmd_DetectionRule.png)
 
 *Fig 10 :Splunk search used to identify encoded PowerShell execution.*
 
@@ -213,7 +213,7 @@ A Splunk dsearch was created to identify PowerShell executions containing the En
 
 A Splunk alert was created using the detection logic and triggered on successfully identifying historical Sysmon events containing encoded PowerShell commands.
 
-![Result Screenshot](Screenshots\Powershell-activity\EncodedCmd_AlertResult.png)
+![Result Screenshot](Screenshots/Powershell-activity/EncodedCmd_AlertResult.png)
 
 *Fig 11 :Trigger history for the encoded PowerShell alert.*
 
@@ -231,7 +231,7 @@ Detect processes spawned by PowerShell that may indicate suspicious post-exploit
 
 A Splunk search was created to identify Sysmon events containing PowerShell parent processes and child process creation activity.
 
-![detection rule](Screenshots\Powershell-activity\Ps_SpawningChild_rule.png)
+![detection rule](Screenshots/Powershell-activity/Ps_SpawningChild_rule.png)
 
 *Fig 12 :Splunk search used to identify processes spawned by PowerShell..*
 
@@ -239,13 +239,13 @@ A Splunk search was created to identify Sysmon events containing PowerShell pare
 
 The search successfully identified Sysmon events where PowerShell launched a child process. The results confirmed that calc.exe was spawned by PowerShell and the alert triggered successfully.
 
-![Result Screenshot](Screenshots\Powershell-activity\ps-spawningresult.png)
+![Result Screenshot](Screenshots/Powershell-activity/ps-spawningresult.png)
 
 *Fig 13 :Sysmon events showing PowerShell spawning calc.exe as a child process.*
 
 
 
-![Alert Screenshot](Screenshots\Powershell-activity\ps-spawning-alert.png)
+![Alert Screenshot](Screenshots/Powershell-activity/ps-spawning-alert.png)
 
 *Fig 14 :Splunk alert successfully triggered on PowerShell child process activity.*
 
@@ -269,7 +269,7 @@ Analysis of the authentication records revealed repeated failed login attempts o
 
 The investigation of the authentication logs confirmed that several failed password attempts occurred before a successful SSH login was achieved.
 
-![SSH successful login](Screenshots\ssh-bruteforce\authlog-succesfulLogin.png)
+![SSH successful login](Screenshots/ssh-bruteforce/authlog-succesfulLogin.png)
 *Figure 16 - Successful SSH authentication recorded in Linux auth.log.*
 
 **Investigation Findings**
@@ -323,7 +323,7 @@ The investigation confirmed that the analyst account successfully executed `sudo
 
 The triggered Splunk alert was reviewed to confirm that the detection logic successfully identified PowerShell executions containing encoded command-line arguments.
 
-![Encoded PowerShell Alert](Screenshots\Powershell-activity\encodedcmd_alertdetct.png)
+![Encoded PowerShell Alert](Screenshots/Powershell-activity/encodedcmd_alertdetct.png)
 
 *Figure 18 - Splunk alert triggered for encoded PowerShell execution.*
 
@@ -331,7 +331,7 @@ The triggered Splunk alert was reviewed to confirm that the detection logic succ
 
 Search results were examined to identify the PowerShell process and associated command-line arguments.
 
-![Encoded PowerShell Detection](Screenshots\Powershell-activity\EncodedCmd_AlertResult.png)
+![Encoded PowerShell Detection](Screenshots/Powershell-activity/EncodedCmd_AlertResult.png)
 
 *Figure 19 - Splunk search results showing encoded PowerShell execution.*
 
@@ -348,7 +348,7 @@ CommandLine:
 powershell -EncodedCommand ...
 ```
 
-![Sysmon Encoded PowerShell Evidence](Screenshots\Powershell-activity\sysmon_log_Encoded_command.png)
+![Sysmon Encoded PowerShell Evidence](Screenshots/Powershell-activity/sysmon_log_Encoded_command.png)
 
 *Figure 20 - Sysmon process creation event showing encoded PowerShell execution.*
 
@@ -367,7 +367,7 @@ Sysmon successfully recorded the process creation event.The activity was success
 
 The triggered Splunk alert was reviewed to confirm that the detection logic successfully identified PowerShell process creation activity associated with a child process.
 
-![PowerShell Child Process Alert](Screenshots\Powershell-activity\ps-spawning-alert.png)
+![PowerShell Child Process Alert](Screenshots/Powershell-activity/ps-spawning-alert.png)
 
 *Figure 21 - Splunk alert triggered for PowerShell child process activity.*
 
@@ -375,7 +375,7 @@ The triggered Splunk alert was reviewed to confirm that the detection logic succ
 
 Search results were examined to identify the parent process, child process, and associated command-line arguments.
 
-![PowerShell Child Process Detection](Screenshots\Powershell-activity\ps-spawningresult.png)
+![PowerShell Child Process Detection](Screenshots/Powershell-activity/ps-spawningresult.png)
 
 *Figure 22 - Splunk search results showing PowerShell spawning a child process.*
 
@@ -386,16 +386,16 @@ The corresponding Sysmon process creation events were reviewed to validate the r
 Observed indicators included:
 
 ```text
-Image: C:\Windows\System32\calc.exe
+Image: C:/Windows/System32/calc.exe
 
 ParentImage:
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
 
 ParentCommandLine:
 powershell -WindowStyle Hidden -Command "Start-Process calc"
 ```
 
-![PowerShell Parent Child Evidence](Screenshots\Powershell-activity\sysmon_log_PS_spawning_Calc.png)
+![PowerShell Parent Child Evidence](Screenshots/Powershell-activity/sysmon_log_PS_spawning_Calc.png)
 
 *Figure 23 - Sysmon process creation event showing PowerShell spawning calc.exe.*
 
