@@ -16,6 +16,20 @@ Attack scenarios included:
 
 Logs from Linux auth.log and Windows Sysmon were ingested into Splunk and used to create custom detections, alerts, and investigation workflows.
 
+## Skills Demonstrated
+
+- Splunk SIEM
+- Detection Engineering
+- Alert Creation
+- Log Analysis
+- Incident Investigation
+- Linux Authentication Log Analysis
+- Windows Sysmon Monitoring
+- SSH Brute Force Detection
+- Privilege Escalation Detection
+- PowerShell Threat Detection
+- Security Event Correlation
+
 ## Objectives
 
 - Collect and centralize Windows and Linux security telemetry
